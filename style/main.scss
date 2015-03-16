@@ -1,0 +1,28 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color-a: rgba(121, 134, 203, 0.8);
+
+// Clear the mess
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  font-family: $font-stack;
+}
+
+.header-container {
+
+	position: fixed;
+	width: 100%;
+	height: 3.4em;
+	background-color: $primary-color-a;
+
+	div {
+		height: 1.4em;
+		font-size: 1.2em;
+		padding-top: 1em;
+		text-align: center;
+		color: white;
+	}
+}
