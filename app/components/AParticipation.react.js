@@ -1,12 +1,15 @@
-var React = window.React;
-var $     = window.$;
+/**
+ * Participator React Componment
+ * @author SurfaceW
+ * @version 1.0 
+ */
 
-var Header = require('./fragment/Header.react');
+var React = window.React;
 
 var Participator = React.createClass({
 	render: function () {
 		return (
-			<div>I‘m Actually a Participator!</div>
+			<div>Actually a Participator!</div>
 		);
 	}
 });

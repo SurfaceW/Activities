@@ -14,7 +14,7 @@ var usertype = 'publisher'; // in test case
 // var usertype = 'participator';
 
 (function () {
-	var _container = $('body').get(0);
+	var _container = $('#main-container').get(0);
 	switch (usertype) {
 		case consts.USERTYPE.PUBLISHER: 
 			React.render( <Publisher />, _container);

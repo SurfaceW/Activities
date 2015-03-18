@@ -50,6 +50,7 @@ var fn = EventEmiter.prototype = {
 	}
 }
 
-
+fn.emmit   = fn.on;
 fn.trigger = fn.dispatch;
+
 module.exports = EventEmiter;
