@@ -7,7 +7,7 @@ var $            = window.$;
 
 var consts       = require('./constants/constants');
 var Publisher    = require('./components/Publisher.react');
-var Participator = require('./components/Participator.react');
+var Participator = require('./components/AParticipation.react');
 
 // var usertype = null; 
 var usertype = 'publisher'; // in test case
