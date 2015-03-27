@@ -5,25 +5,26 @@
  */
 
 var consts          = require('../constants/constants');
-var ActivitiesStore = require('../stores/ActivitiesStore');
-var AppDispatcher   = ActivitiesStore.dispatcher;
+var AppDispatcher   = require('../dispatcher/Dispatcher');
 
 var activityEvent = consts.ACTIVITY_EVENTS;
 var ActivityAction = {
 
+	// Fetch back data from server
 	fetch: function () {
 		AppDispatcher.dispatch({
 			type: activityEvent.ACTIVITY_FETCH
 		});
 	},
 
-	create: function (content) {
+	// Create a new activity
+	create: function () {
 		AppDispatcher.dispatch({
-			type: activityEvent.ACTIVITY_CREATE,
-			content: content
+			type: activityEvent.ACTIVITY_CREATE
 		});
 	},
 
+	// Update the activity data
 	update: function (content) {
 		AppDispatcher.dispatch({
 			type: activityEvent.ACTIVITY_UPDATE,
@@ -31,12 +32,13 @@ var ActivityAction = {
 		});
 	},
 
+	// Delete activity
 	delete: function (id) {
 		AppDispatcher.dispatch({
 			type: activityEvent.ACTIVITY_DELETE,
 			id: id
 		});
-	}
+	},
 
 };
 

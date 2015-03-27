@@ -22,17 +22,11 @@ module.exports = {
 		'TITLE_SMALL': 12,
 
 		'PARAGRAPTH': 20,
-
 		'LINK': 30,
-
 		'IMAGE': 40,
-
 		'SOUND': 50,
-
 		'VIDEO': 60,
-
 		'LOCATION': 70,
-
 		'DATE_TIME': 80
 	}, 
 

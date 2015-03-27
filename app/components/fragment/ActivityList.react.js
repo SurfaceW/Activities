@@ -8,23 +8,15 @@ var React           = window.React;
 var $               = window.$;
 var ActivitiesStore = require('../../stores/ActivitiesStore');
 var ActivityItem    = require('./ActivityItem.react');
+var NoActivity      = require('./NoActivity.react');
+var Loading         = require('./Loading.react');
 
 var ActivityList = React.createClass({
 
 	isini: false,
 
-	ini: function () {
-		var _this  = this;
-		this.isini = true;
-
-		ActivitiesStore.on('fetch_complete', function () {
-			_this.setState({'fetchComplete': true});
-		});
-	},
-
 	render: function () {
-
-		var _this = this;
+		
 		var activitiesData = ActivitiesStore.getAll();
 		var activities = [];
 
@@ -36,17 +28,17 @@ var ActivityList = React.createClass({
 				activities.push(<ActivityItem key={i} content={activitiesData[i]} />);
 			};
 
-			return (<div>{activities}</div>);
+			return (<div className="activity-list-container">{activities}</div>);
 
 		} else if (!!activitiesData && activitiesData.length === 0) {
 
 			// User hasn't create any activity
-			return (<div> {"You haven't yet create an activity!"} </div>);
+			return (<div className="activity-list-container"><NoActivity /></div>);
 
 		} else {
 
 			// Loading from server
-			return (<div>{"Now Processing the Data..."}</div>);
+			return (<div className="activity-list-container"><Loading /></div>);
 		}
 	}
 });

@@ -15,11 +15,16 @@ var ActivityAction  = require('../actions/ActivityAction');
 
 var Publisher = React.createClass({
 	render: function () {
+		var _this = this;
 
 		// Async load data from server
 		setTimeout(function () {
 			ActivityAction.fetch();
 		}, 1);
+
+		ActivitiesStore.on('change', function () {
+			_this.setState();
+		});
 
 		return (
 			<div className="wrapper">

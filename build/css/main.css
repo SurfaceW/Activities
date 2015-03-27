@@ -11,8 +11,15 @@ body {
   height: 3.4em;
   background-color: rgba(121, 134, 203, 0.8); }
   .header-container div {
-    height: 1.4em;
+    height: 3.4em;
     font-size: 1.2em;
     padding-top: 1em;
     text-align: center;
     color: white; }
+
+.activity-list-container {
+  position: relative;
+  top: 3.4em;
+  width: 100%; }
+  .activity-list-container .no-activity {
+    margin: 0 auto; }

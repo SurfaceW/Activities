@@ -285,4 +285,4 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 
 
 
-module.exports = Dispatcher;
+module.exports = new Dispatcher();
