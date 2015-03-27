@@ -17,9 +17,9 @@ body {
     text-align: center;
     color: white; }
 
-.activity-list-container {
+.body-container, .loading-container, .no-activity-container, .activity-list-container {
   position: relative;
   top: 3.4em;
+  margin: 0 auto;
   width: 100%; }
-  .activity-list-container .no-activity {
-    margin: 0 auto; }
+

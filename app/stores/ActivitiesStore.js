@@ -5,12 +5,13 @@
  */
 
 var $             = window.$;
-var consts        = require('../constants/constants');
+var constants        = require('../constants/constants');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 var EventEmiter   = require('../util/EventEmiter');
 
 var _activities = {};
-var activityEvent = consts.ACTIVITY_EVENTS;
+var activityEvent = constants.ACTIVITY_EVENTS;
+var activityState = constants.ACTIVITY_STATES;
 
 // Data for testing
 var activitiesData = [
@@ -25,12 +26,14 @@ var ActivitiesStore = {
 };
 
 function fetch() {
-	// return $.ajax({
-	// 	url: '',
-	// 	type: ''
-	// });
 	
 	_activities = activitiesData;
+
+	if (_activities.length === 0) {
+		return activityState.PUBLISHER_NEW;
+	}
+
+	return activityState.PUBLISHER_ACTIVITIE_LIST;
 }
 
 function create() {
@@ -48,8 +51,8 @@ AppDispatcher.register(function (action) {
 	switch(action.type) {
 		case activityEvent.ACTIVITY_FETCH:
 			// fetch().done(function () {});
-			fetch();
-			ActivitiesStore.trigger('change');
+			var state = fetch();
+			ActivitiesStore.trigger('change', state);
 		break;
 		case activityEvent.ACTIVITY_CREATE: 
 			// ActivitiesStore.trigger('create_new_activity');

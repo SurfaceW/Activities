@@ -10,7 +10,7 @@ var NoActivity = React.createClass({
 
 	render: function () {
 		return (
-			<div className="no-activity">
+			<div className="no-activity-container">
 			<p className="no-activity-hint">还没有活动，创建一个吧 :)</p>
 			<button className="add-first-activity" onClick={this.handleClick}>
 				<span className="add-first-activity-icon"></span>

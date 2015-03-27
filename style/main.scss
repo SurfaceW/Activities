@@ -1,5 +1,10 @@
+// 标准字体预设
 $font-stack: Helvetica, sans-serif;
+
+// 颜色预设
 $primary-color-a: rgba(121, 134, 203, 0.8);
+
+// 高度预设
 $header-height: 3.4em;
 $header-font-size: 1.2em;
 
@@ -29,23 +34,25 @@ body {
 	}
 }
 
-.activity-list-container {
+.body-container {
 
 	position: relative;
 	top: $header-height;
+
+	margin: 0 auto;
 	width: 100%;
 
-	// Activites States
+}
 
+.loading-container {
 
+	@extend .body-container;
 
-	// Loading State
+}
 
+.no-activity-container {
 
-	// No Activity State
-	.no-activity {
-		margin: 0 auto;
-	}
+	@extend .body-container;
 
 	.add-first-activity {
 
@@ -54,5 +61,10 @@ body {
 	.add-first-activity-icon {
 
 	}
+}
+
+.activity-list-container {
+
+	@extend .body-container;
 
 }
