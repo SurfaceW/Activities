@@ -1,3 +1,9 @@
+/**
+ * Loading React Componement
+ * @author SurfaceW
+ * @version 1.0 
+ */
+
 var React = window.React;
 var $     = window.$;
 

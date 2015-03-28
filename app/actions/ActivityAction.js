@@ -19,17 +19,18 @@ var ActivityAction = {
 	},
 
 	// Create a new activity
-	create: function () {
+	create: function (data) {
 		AppDispatcher.dispatch({
-			type: activityEvent.ACTIVITY_CREATE
+			type: activityEvent.ACTIVITY_CREATE,
+			data: data
 		});
 	},
 
 	// Update the activity data
-	update: function (content) {
+	update: function (data) {
 		AppDispatcher.dispatch({
 			type: activityEvent.ACTIVITY_UPDATE,
-			content: content
+			data: data
 		});
 	},
 
@@ -40,6 +41,21 @@ var ActivityAction = {
 			id: id
 		});
 	},
+
+	// Show the Detail of An Activity
+	detail: function(name) {
+		AppDispatcher.dispatch({
+			type: activityEvent.ACTIVITY_DETAIL,
+			name: name
+		});
+	},
+
+	// Cancel the create activity
+	cancel: function() {
+		AppDispatcher.dispatch({
+			type: activityEvent.ACTIVITY_CANCEL
+		});
+	}
 
 };
 

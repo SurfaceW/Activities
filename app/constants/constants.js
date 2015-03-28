@@ -14,55 +14,72 @@ module.exports = {
 	// H5 Componements Type
 	'TEMPLATE_COMPONEMENT_TYPE': {
 
-		'BACKGROUND_DEFAUT': 0,
-		'BACKGROUND_URL': 1,
+		'BACKGROUND_DEFAUT': 'default',
+		'BACKGROUND_URL': 'url',
 
-		'TITLE_LARGE': 10,
-		'TITLE_MIDDLE':11,
-		'TITLE_SMALL': 12,
+		'TITLE_LARGE': 'large',
+		'TITLE_MIDDLE': 'middle',
+		'TITLE_SMALL': 'small',
 
-		'PARAGRAPTH': 20,
-		'LINK': 30,
-		'IMAGE': 40,
-		'SOUND': 50,
-		'VIDEO': 60,
-		'LOCATION': 70,
-		'DATE_TIME': 80
+		'PARAGRAPTH': 'p',
+		'LINK': 'a',
+		'IMAGE': 'img',
+		'SOUND': 'audio',
+		'VIDEO': 'video',
+		'LOCATION': 'loc',
+		'DATE_TIME': 'date'
 	}, 
 
 	// Componements Showing and Hiding Style
 	'TEMPLATE_COMPONEMENT_DISPLAY_TYPE': {
 
-		'EASE_IN': 0,
-		'EASE_OUT': 1
+		'EASE_IN': 'ease-in',
+		'EASE_OUT': 'ease-out'
 	},
 
 	// Componements Special Animation Style
 	'TEMPLATE_COMPONEMENT_AINMATION_TYPE': {
 
-		'SWING': 0
+		'SWING': 'swing'
 	},
 
 	// Activity Events
 	'ACTIVITY_EVENTS': {
-		'ACTIVITY_CREATE': 	1,
-		'ACTIVITY_UPDATE': 	2,
-		'ACTIVITY_DELETE': 	3 
+
+		'ACTIVITY_FETCH': 'fetch',
+		'ACTIVITY_CREATE': 	'create',
+		'ACTIVITY_UPDATE': 	'update',
+		'ACTIVITY_DELETE': 	'delete',
+		'ACTIVITY_DETAIL': 'detail',
+		'ACTIVITY_CANCEL': 'cancel'
+	},
+
+	// Page Events
+	'PAGE_EVENTS': {
+		'PAGE_HIEGHLIGHT': 'highlight',
+		'PAGE_PREVIEW': 'preview',
+		'PAGE_FINISH': 'finish'
 	},
 
 	// States of Components
 	'ACTIVITY_STATES': {
-		'LOADING': 0,
+
+		'LOADING': 'loading',
 		
-		'PUBLISHER_NEW': 1,
-		'PUBLISHER_ADD_NEW': 2,
-		'PUBLISHER_ACTIVITY_DESIGN': 3,
-		'PUBLISHER_ACTIVITY_VIEW': 4,
-		'PUBLISHER_ACTIVITY_DETAIL': 5,
-		'PUBLISHER_ACTIVITY_LIST': 6,
+		'PUBLISHER_NEW': 'new',
+		'PUBLISHER_ADD_NEW': 'add-new',
+		'PUBLISHER_ACTIVITY_DESIGN': 'design',
+		'PUBLISHER_ACTIVITY_PRVIEW': 'review',
+		'PUBLISHER_ACTIVITY_DETAIL': 'detail',
+		'PUBLISHER_ACTIVITY_LIST': 'list',
 
-		'PARTICIPATOR_VIEW': 7,
-		'PARTICIPATOR_2DCODE': 8
+		'PARTICIPATOR_VIEW': 'p-reveiw',
+		'PARTICIPATOR_2DCODE': 'p-2dcode'
+	},
+
+	// Tmeplates
+	'ACTIVITY_PAGE_TEMPLATE': {
+		'design': [{'page': 1, 'template': 1, 'components': {}}],
+		'info': ['姓名', '邮箱', '电话']
 	}
-
 };
