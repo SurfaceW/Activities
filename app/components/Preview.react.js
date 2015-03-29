@@ -38,11 +38,10 @@ var Preview = React.createClass({
 					</button>
 					<button className="right-arrow">
 					</button>
-					<div className="slider-dots">
-						<SliderDot 
-							highlight={i}
-							number=data.design.length/>
-					</div>
+					
+					<SliderDot 
+						highlight={i}
+						number={data.design.length} />
 				</div>
 			</div>
 		);
@@ -52,10 +51,15 @@ var Preview = React.createClass({
 var SliderDot = React.createClass({
 	render: function () {
 
-		for (var i = 0; i < )
+		var dots = [];
+		for (var i = 0; i < this.props.number; i++) {
+			dots.push('flag');
+		}
 
 		return (
-
+			<div className="slider-dots">
+				{dots.map(function() {return (<div className="slider-little-dot"></div>);})}
+			</div>
 		);
 	}
 });
