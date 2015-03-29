@@ -10,10 +10,6 @@ var $ = window.$;
 var ActivitiesStore = require('../../stores/ActivitiesStore');
 var ActivityAction  = require('../../actions/ActivityAction');
 
-var SelectInput     = require('../forms/Select.react');
-var InputText       = require('../forms/InputText.react');
-var InputDate       = require('../forms/InputDate.react');
-
 var NewActivity = React.createClass({
 
 	getInitialState: function () {
@@ -84,7 +80,6 @@ var NewActivity = React.createClass({
 	},
 
 	_changetype: function (e) {
-		console.log({'type': this._value(e.target)});
 		this.setState({'type': this._value(e.target)});
 	},
 

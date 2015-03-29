@@ -45,8 +45,13 @@ function fetch() {
 		: activityState.PUBLISHER_ACTIVITY_LIST;
 }
 
-function detail() {
-	
+function detail(name) {
+	for (var i = _activity.length - 1; i >= 0; i--) {
+		if (_activity[i].name === name) {
+			ActivitiesStore.currentActivity = _activity[i];
+		}
+	};
+	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_DETAIL;
 }
 
 function cancel() {
@@ -73,6 +78,7 @@ function update(data) {
 }
 
 function deleteItem() {
+	
 }
 
 $.extend(ActivitiesStore, EventEmiter.prototype);

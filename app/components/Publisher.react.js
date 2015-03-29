@@ -7,14 +7,15 @@
 var React           = window.React;
 var $               = window.$;
 
-var Header          = require('./fragment/Header.react');
-var ActivityList    = require('./fragment/ActivityList.react');
-var Loading         = require('./fragment/Loading.react');
-var Error           = require('./fragment/Error.react');
-var NoActivity      = require('./fragment/NoActivity.react');
-var NewActivity     = require('./fragment/NewActivity.react');
-var ActivityDesign  = require('./fragment/ActivityDesign.react');
-var ActivityDetail  = require('./fragment/ActivityDetail.react');
+var Header         = require('./fragment/Header.react');
+var ActivityList   = require('./fragment/ActivityList.react');
+var Loading        = require('./fragment/Loading.react');
+var Error          = require('./fragment/Error.react');
+var NoActivity     = require('./fragment/NoActivity.react');
+var NewActivity    = require('./fragment/NewActivity.react');
+var ActivityDesign = require('./fragment/ActivityDesign.react');
+var ActivityDetail = require('./fragment/ActivityDetail.react');
+var ActivityPreview        = require('./Preview.react');
 
 var ActivitiesStore = require('../stores/ActivitiesStore');
 var ActivityAction  = require('../actions/ActivityAction');
@@ -87,6 +88,14 @@ var Publisher = React.createClass({
 					<div className="wrapper">
 						<Header title="活动设计" />
 						<ActivityDesign />
+					</div>
+				);
+				break;
+			case constants.PUBLISHER_ACTIVITY_PRVIEW:
+				// 进入活动预览页面
+				return (
+					<div className="wrapper">
+						<ActivityPreview />
 					</div>
 				);
 				break;

@@ -26,8 +26,7 @@ var ActivityList = React.createClass({
 		for (var i = 0; i < activitiesData.length; i++) {
 			activities.push(<ActivityItem 
 				key={i} 
-				data={activitiesData[i]} 
-				type="list" />);
+				data={activitiesData[i]} />);
 		};
 
 		return (
