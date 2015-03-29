@@ -3,10 +3,22 @@ $font-stack: Helvetica, sans-serif;
 
 // 颜色预设
 $primary-color-a: rgba(121, 134, 203, 0.8);
+$buttonandheader-txt-color:white;
+$p-color:rgb(165, 160, 160);
+$button-background-color:rgba(121, 134, 203, 0.5);
 
 // 高度预设
-$header-height: 3.4em;
+$header-height: 3.9em;
 $header-font-size: 1.2em;
+$button-height:3.6em;
+$button-border-radius:1.6em;
+$button-width:14.5em;
+$button-border-width:0em;
+$p-font-size:0.8em;
+$p-letter-spacing:0.1em;
+$p-padding-left:1em;
+
+
 
 // Clear the mess
 * {
@@ -26,6 +38,7 @@ body {
 	background-color: $primary-color-a;
 
 	div {
+
 		height: $header-height;
 		font-size: $header-font-size;
 		padding-top: ($header-height - $header-font-size - 0.2) / 2;
@@ -39,7 +52,7 @@ body {
 	position: relative;
 	top: $header-height;
 
-	margin: 0 auto;
+	text-align: center;
 	width: 100%;
 
 }
@@ -54,11 +67,53 @@ body {
 
 	@extend .body-container;
 
+
 	.add-first-activity {
+
+	border-radius:$button-border-radius;
+		height:$button-height;
+		width:$button-width;
+		border-width:$button-border-width;
+		background-color:$button-background-color;
+		font-family:"Microsoft YaHei" ! important;
+		color:$buttonandheader-txt-color;}
+	
+	.add-first-activity-icon {
 
 	}
 
-	.add-first-activity-icon {
+	.add-p-style {
+
+		position:relative;
+		top:1.5em;
+	}
+
+	.p-style {
+
+		font-size:$p-font-size;
+		letter-spacing:$p-letter-spacing;
+		padding-left:$p-padding-left;
+		color:$p-color;
+	}
+	
+
+	
+
+	.add-button-style {
+
+		position:relative;
+		top:2.6em;
+	}
+
+	.button-style{
+
+		border-radius:$button-border-radius;
+		height:$button-height;
+		width:$button-width;
+		border-width:$button-border-width;
+		background-color:$button-background-color;
+		font-family:"Microsoft YaHei" ! important;
+		color:$buttonandheader-txt-color;
 
 	}
 }
