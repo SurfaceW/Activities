@@ -17,7 +17,7 @@ body {
     text-align: center;
     color: white; }
 
-.body-container, .loading-container, .no-activity-container, .activity-list-container {
+.body-container, .loading-container, .no-activity-container, .activity-list-container, .create-new-activity-container, .activity-design-container, .activity-detail-container, .error-hint-container {
   position: relative;
   top: 3.9em;
   text-align: center;

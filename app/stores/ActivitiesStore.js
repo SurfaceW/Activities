@@ -1,45 +1,75 @@
 /**
- * ActivitiesStore Class
+ * ActivitiesStore
  * @author SurfaceW
  * @version 1.0
  */
 
 var $             = window.$;
-var constants        = require('../constants/constants');
+var constants     = require('../constants/constants');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 var EventEmiter   = require('../util/EventEmiter');
 
-var _activities = {};
 var activityEvent = constants.ACTIVITY_EVENTS;
+var pageEvent     = constants.PAGE_EVENTS;
 var activityState = constants.ACTIVITY_STATES;
 
-// Data for testing
-var activitiesData = [
+var _activity     = [];
 
-];
+// test data
+// var activityData = require('../../data/demodata').testdata;
+var activityData = [];
+
 
 var ActivitiesStore = {
 
-	getAll: function () {
-		return _activities;
+	// 整个App的顶级视图
+	view: activityState.LOADING,
+
+	// 当前正在交互的 Activity
+	currentActivity: null,
+
+	getAllStates: function () {
+		return {
+			'view': this.view,
+			'activities': _activity
+		}
 	}
 };
 
-function fetch() {
+function fetch() {	
+	_activity = activityData;
+
+	// 如果没有活动，展开新手视图，否则打开活动列表
+	ActivitiesStore.view = _activity.length === 0 
+		? activityState.PUBLISHER_NEW
+		: activityState.PUBLISHER_ACTIVITY_LIST;
+}
+
+function detail() {
 	
-	_activities = activitiesData;
+}
 
-	if (_activities.length === 0) {
-		return activityState.PUBLISHER_NEW;
+function cancel() {
+	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_LIST;
+}
+
+function preview() {
+	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_PRVIEW;
+}
+
+function create(d) {
+	if (d) {
+		_activity.push(d);
+		ActivitiesStore.currentActivity = d;
+		ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_DESIGN;
+	} else {
+		ActivitiesStore.view = activityState.PUBLISHER_ADD_NEW;
 	}
-
-	return activityState.PUBLISHER_ACTIVITIE_LIST;
 }
 
-function create() {
-}
-
-function update() {
+function update(data) {
+	ActivitiesStore.currentActivity = data;
+	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_LIST;
 }
 
 function deleteItem() {
@@ -51,18 +81,43 @@ AppDispatcher.register(function (action) {
 	switch(action.type) {
 		case activityEvent.ACTIVITY_FETCH:
 			// fetch().done(function () {});
-			var state = fetch();
-			ActivitiesStore.trigger('change', state);
-		break;
-		case activityEvent.ACTIVITY_CREATE: 
-			// ActivitiesStore.trigger('create_new_activity');
-		break;
+			fetch();
+			ActivitiesStore.trigger('view_change');
+			break;
+		case activityEvent.ACTIVITY_CREATE:
+			create(action.data);
+			ActivitiesStore.trigger('view_change');
+			break;
 		case activityEvent.ACTIVITY_UPDATE:
-
-		break;
+			update(action.data);
+			ActivitiesStore.trigger('view_change');
+			break;
 		case activityEvent.ACTIVITY_DELETE:
+			delete(action.data);
+			ActivitiesStore.trigger('view_change');
+			break;
+		case activityEvent.ACTIVITY_DETAIL:
+			detail(action.data);
+			ActivitiesStore.trigger('view_change');
+			break;
+		case activityEvent.ACTIVITY_CANCEL:
+			cancel();
+			ActivitiesStore.trigger('view_change');
+			break;
 
-		break;
+		// ------------- PAGE EVENT -------------
+
+		case pageEvent.PAGE_HIEGHLIGHT:
+			ActivitiesStore.trigger('page_change', action.data);
+			break;
+		case pageEvent.PAGE_PREVIEW:
+			preview();
+			ActivitiesStore.trigger('view_change');
+			break;
+		case pageEvent.PAGE_FINISH:
+			update(action.data);
+			ActivitiesStore.trigger('view_change');
+			break;
 	}
 });
 
