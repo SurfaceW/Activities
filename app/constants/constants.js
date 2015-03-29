@@ -61,6 +61,11 @@ module.exports = {
 		'PAGE_FINISH': 'finish'
 	},
 
+	// Preview events
+	'PREVIEW_EVENTS': {
+		
+	},
+
 	// States of Components
 	'ACTIVITY_STATES': {
 

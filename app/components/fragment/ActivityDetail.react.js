@@ -10,16 +10,23 @@ var $               = window.$;
 var ActivitiesStore = require('../../stores/ActivitiesStore');
 var ActivityAction  = require('../../actions/ActivityAction');
 
-var ActivityDesign = React.createClass({
+var ActivityDetail = React.createClass({
+
+	_iteratorPages: function (item, i) {
+		return (
+			null
+		);
+	},
 
 	render: function () {
+
 		return (
-			<div className="activity-detail-container">
-				Now you can see the detail of this activity!
+			<div className="activity-preview-container">
+				{data.design.map(this._iteratorPages)}
 			</div>
 		);
 	}
 
 });
 
-module.exports = ActivityDesign;
+module.exports = ActivityDetail;

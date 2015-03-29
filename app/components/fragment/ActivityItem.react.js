@@ -1,5 +1,6 @@
 /**
  * ActivityItem React Componement
+ * 
  * @author SurfaceW
  * @version 1.0 
  */
@@ -19,9 +20,7 @@ var ActivityItem = React.createClass({
 	},
 
 	_onclick: function () {
-		if (this.props.type === 'list') {
-			ActivityAction.detail(this.props.content.name);
-		}	
+		ActivityAction.detail(this.props.data.name);
 	}
 });
 
