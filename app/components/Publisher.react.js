@@ -7,15 +7,15 @@
 var React           = window.React;
 var $               = window.$;
 
-var Header         = require('./fragment/Header.react');
-var ActivityList   = require('./fragment/ActivityList.react');
-var Loading        = require('./fragment/Loading.react');
-var Error          = require('./fragment/Error.react');
-var NoActivity     = require('./fragment/NoActivity.react');
-var NewActivity    = require('./fragment/NewActivity.react');
-var ActivityDesign = require('./fragment/ActivityDesign.react');
-var ActivityDetail = require('./fragment/ActivityDetail.react');
-var ActivityPreview        = require('./Preview.react');
+var Header          = require('./fragment/Header.react');
+var ActivityList    = require('./fragment/ActivityList.react');
+var Loading         = require('./fragment/Loading.react');
+var Error           = require('./fragment/Error.react');
+var NoActivity      = require('./fragment/NoActivity.react');
+var NewActivity     = require('./fragment/NewActivity.react');
+var ActivityDesign  = require('./fragment/ActivityDesign.react');
+var ActivityDetail  = require('./fragment/ActivityDetail.react');
+var ActivityPreview = require('./Preview.react');
 
 var ActivitiesStore = require('../stores/ActivitiesStore');
 var ActivityAction  = require('../actions/ActivityAction');
@@ -45,7 +45,7 @@ var Publisher = React.createClass({
 
 	render: function () {
 		var _this = this;
-
+		
 		switch (this.state.view) {
 			case constants.LOADING:
 				return (
@@ -69,7 +69,7 @@ var Publisher = React.createClass({
 				return (
 					<div className="wrapper">
 						<Header title="活动列表" />
-						<ActivityList data={this.state.activities}/>
+						<ActivityList type="publisher"/>
 					</div>
 				);
 				break;

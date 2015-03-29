@@ -8,19 +8,20 @@ var $            = window.$;
 var consts       = require('./constants/constants');
 var Publisher    = require('./components/Publisher.react');
 var Participator = require('./components/Participator.react');
+var AS           = require('./stores/ActivitiesStore');
 
 // var usertype = null; 
-var usertype = 'publisher'; // in test case
-// var usertype = 'participator';
+// var usertype = 'publisher'; // in test case
+AS.usertype = 'participator';
 
 (function () {
 	var _container = $('#main-container').get(0);
-	switch (usertype) {
+	switch (AS.usertype) {
 		case consts.USERTYPE.PUBLISHER: 
-			React.render( <Publisher />, _container);
+			React.render(<Publisher />, _container);
 		break;
 		case consts.USERTYPE.PARTICIPATOR:
-			React.render( <Participator />, _container);
+			React.render(<Participator />, _container);
 		break;
 	}
 })();

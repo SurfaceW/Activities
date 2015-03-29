@@ -63,7 +63,7 @@ module.exports = {
 
 	// Preview events
 	'PREVIEW_EVENTS': {
-		
+
 	},
 
 	// States of Components
@@ -78,7 +78,9 @@ module.exports = {
 		'PUBLISHER_ACTIVITY_DETAIL': 'detail',
 		'PUBLISHER_ACTIVITY_LIST': 'list',
 
-		'PARTICIPATOR_VIEW': 'p-reveiw',
+		'PARTICIPATOR_MAIN': 'p-main',
+		'PARTICIPATOR_PRVIEW': 'p-preview',
+		'PARTICIPATOR_JOIN': 'p-join',
 		'PARTICIPATOR_2DCODE': 'p-2dcode'
 	},
 

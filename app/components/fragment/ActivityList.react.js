@@ -4,29 +4,24 @@
  * @version 1.0 
  */
 
-var React           = window.React;
-var $               = window.$;
+var React          = window.React;
+var $              = window.$;
 
-var ActivitiesStore = require('../../stores/ActivitiesStore');
-var ActivityItem    = require('./ActivityItem.react');
-var ActivityAction  = require('../../actions/ActivityAction');
+var AS             = require('../../stores/ActivitiesStore');
+var ActivityItem   = require('./ActivityItem.react');
+var ActivityAction = require('../../actions/ActivityAction');
 
 var ActivityList = React.createClass({
 
-	getInitialState: function () {
-		// return {'activities': ActivitiesStore.getAllStates()};
-		return {};
-	},
-
 	render: function () {
 
-		var activitiesData = this.props.data;
+		var data = AS.getAllStates();
 		var activities = [];
 
-		for (var i = 0; i < activitiesData.length; i++) {
+		for (var i = 0; i < data.length; i++) {
 			activities.push(<ActivityItem 
 				key={i} 
-				data={activitiesData[i]} />);
+				data={data[i]} />);
 		};
 
 		return (
@@ -34,8 +29,7 @@ var ActivityList = React.createClass({
 				{activities}
 				<button 
 					className="add-activity-button" 
-					onClick={this._onclick}
-				>
+					onClick={this._onclick}>
 				+ 新建活动
 				</button>
 			</div>

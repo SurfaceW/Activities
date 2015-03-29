@@ -9,21 +9,24 @@ var constants     = require('../constants/constants');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 var EventEmiter   = require('../util/EventEmiter');
 
-var activityEvent = constants.ACTIVITY_EVENTS;
+var events        = constants.ACTIVITY_EVENTS;
 var pageEvent     = constants.PAGE_EVENTS;
-var activityState = constants.ACTIVITY_STATES;
+var states        = constants.ACTIVITY_STATES;
 
 var _activity     = [];
 
 // test data
-// var activityData = require('../../data/demodata').testdata;
-var activityData = [];
+var activityData = require('../../data/demodata').testdata;
+// var activityData = [];
 
 
-var ActivitiesStore = {
+var AS = ActivitiesStore = {
+
+	// participator or publisher
+	usertype: null,
 
 	// 整个App的顶级视图
-	view: activityState.LOADING,
+	view: states.LOADING,
 
 	// 当前正在交互的 Activity
 	currentActivity: null,
@@ -39,90 +42,116 @@ var ActivitiesStore = {
 function fetch() {	
 	_activity = activityData;
 
-	// 如果没有活动，展开新手视图，否则打开活动列表
-	ActivitiesStore.view = _activity.length === 0 
-		? activityState.PUBLISHER_NEW
-		: activityState.PUBLISHER_ACTIVITY_LIST;
+	if (AS.usertype === 'publisher') {
+		// 如果没有活动，展开新手视图，否则打开活动列表
+		AS.view = _activity.length === 0 
+			? states.PUBLISHER_NEW
+			: states.PUBLISHER_ACTIVITY_LIST;
+	} else {
+		AS.view = states.PARTICIPATOR_PRVIEW;
+		AS.currentActivity = _activity[0];
+	}
+
+	
 }
 
 function detail(name) {
 	for (var i = _activity.length - 1; i >= 0; i--) {
 		if (_activity[i].name === name) {
-			ActivitiesStore.currentActivity = _activity[i];
+			AS.currentActivity = _activity[i];
 		}
 	};
-	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_DETAIL;
+	AS.view = states.PUBLISHER_ACTIVITY_DETAIL;
 }
 
 function cancel() {
-	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_LIST;
+	AS.view = states.PUBLISHER_ACTIVITY_LIST;
 }
 
 function preview() {
-	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_PRVIEW;
+	AS.view = states.PUBLISHER_ACTIVITY_PRVIEW;
 }
 
 function create(d) {
 	if (d) {
-		_activity.push(d);
-		ActivitiesStore.currentActivity = d;
-		ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_DESIGN;
+		if (d.newAc) {
+			delete d.newAc;
+			_updateObj(AS.currentActivity, d);
+		} else {
+			_activity.push(d);
+			AS.currentActivity = d;
+		}
+		AS.view = states.PUBLISHER_ACTIVITY_DESIGN;
 	} else {
-		ActivitiesStore.view = activityState.PUBLISHER_ADD_NEW;
+		AS.view = states.PUBLISHER_ADD_NEW;
 	}
 }
 
 function update(data) {
-	ActivitiesStore.currentActivity = data;
-	ActivitiesStore.view = activityState.PUBLISHER_ACTIVITY_LIST;
+	if (data) {
+		AS.currentActivity = data;
+		AS.view = states.PUBLISHER_ACTIVITY_LIST;
+		AS.currentActivity = null;
+
+		if (!data.share.url) {
+			// If it is new we need to use Ajax to fetch back the
+			// url and 2dc source
+		}
+	}
 }
 
 function deleteItem() {
 	
 }
 
-$.extend(ActivitiesStore, EventEmiter.prototype);
+function _updateObj(origin, target) {
+	$.each(target, function (key, val) {
+		origin[key] = target[key];
+	});
+}
+
+$.extend(AS, EventEmiter.prototype);
 
 AppDispatcher.register(function (action) {
 	switch(action.type) {
-		case activityEvent.ACTIVITY_FETCH:
+		case events.ACTIVITY_FETCH:
 			// fetch().done(function () {});
 			fetch();
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
-		case activityEvent.ACTIVITY_CREATE:
+		case events.ACTIVITY_CREATE:
 			create(action.data);
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
-		case activityEvent.ACTIVITY_UPDATE:
+		case events.ACTIVITY_UPDATE:
 			update(action.data);
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
-		case activityEvent.ACTIVITY_DELETE:
+		case events.ACTIVITY_DELETE:
 			delete(action.data);
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
-		case activityEvent.ACTIVITY_DETAIL:
+		case events.ACTIVITY_DETAIL:
 			detail(action.data);
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
-		case activityEvent.ACTIVITY_CANCEL:
+		case events.ACTIVITY_CANCEL:
 			cancel();
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
 
 		// ------------- PAGE EVENT -------------
 
 		case pageEvent.PAGE_HIEGHLIGHT:
-			ActivitiesStore.trigger('page_change', action.data);
+			AS.trigger('page_change', action.data);
 			break;
 		case pageEvent.PAGE_PREVIEW:
 			preview();
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
 		case pageEvent.PAGE_FINISH:
 			update(action.data);
-			ActivitiesStore.trigger('view_change');
+			AS.trigger('view_change');
 			break;
 	}
 });

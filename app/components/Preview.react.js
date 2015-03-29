@@ -34,9 +34,9 @@ var Preview = React.createClass({
 					info={data.info}
 					components={data.design[i].components} />
 				<div className="preview-control-panel">
-					<button className="left-arrow">
+					<button className="left-arrow">上一页
 					</button>
-					<button className="right-arrow">
+					<button className="right-arrow">下一页
 					</button>
 					
 					<SliderDot 
@@ -58,7 +58,10 @@ var SliderDot = React.createClass({
 
 		return (
 			<div className="slider-dots">
-				{dots.map(function() {return (<div className="slider-little-dot"></div>);})}
+				{dots.map(function(item, i) {return (
+					<div className="slider-little-dot"
+						key={i}>
+					</div>);})}
 			</div>
 		);
 	}

@@ -5,37 +5,48 @@
  */
 
 var React           = window.React;
-var $ = window.$;
-
+var $               = window.$;
 var ActivitiesStore = require('../../stores/ActivitiesStore');
 var ActivityAction  = require('../../actions/ActivityAction');
 
 var NewActivity = React.createClass({
 
 	getInitialState: function () {
+		var data;
+
+		if (ActivitiesStore.currentActivity) {
+			data = ActivitiesStore.currentActivity;
+		} else {
+			data = {};
+		}
+
 		return {
-			'name': null,
-			'type': null,
-			'date': null,
-			'loca': null
+			'newAc': data.name ? true : false,
+			'name': data.name ? data.name : '',
+			'type': data.type ? data.type : '',
+			'date': data.date ? data.date : '',
+			'loca': data.loca ? data.loca : ''
 		};
 	},
 
 	render: function () {
+
+		var data;
+
 		return (
 			<div className="create-new-activity-container">
 				<div className="activity-card">
-					<img src=""></img>
+					<img src="" />
 					<input type="text" className="activity-name" 
-						placeholder="请输入活动名称" 
-						onChange={this._changename}
-					/>
+						placeholder="请输入活动名称"
+						value={this.state.name}
+						onChange={this._changename} />
 				</div>
 				<div className="activity-info">
 					<div className="activity-info-item">
 						<label>选择活动类型</label>
 						<select className="activity-info-type" 
-							onChange={this._changetype}>
+							onChange={this._changetype} value={this.state.type}>
 							<option value="1">聚会</option>
 							<option value="2">旅行</option>
 							<option value="3">会议</option>
@@ -46,6 +57,7 @@ var NewActivity = React.createClass({
 					<div className="activity-info-item">
 						<label>请选择活动时间</label>
 						<input type="date" 
+							value={this.state.date}
 							className="activity-info-date" 
 							onChange={this._changedate}/>
 					</div>
@@ -53,6 +65,7 @@ var NewActivity = React.createClass({
 					<div className="activity-info-item">
 						<label>请选择活动地点</label>
 						<input type="text" 
+							value={this.state.loca}
 							className="activity-info-loca" 
 							onChange={this._changeloca}/>
 					</div>
@@ -60,12 +73,12 @@ var NewActivity = React.createClass({
 				<button 
 					className="activity-create"
 					onClick={this._createNewActivity}>
-					创建活动
+					确定
 				</button>
 				<button 
 					className="activity-cancel"
 					onClick={this._cancel}>
-					取消创建
+					取消
 				</button>
 			</div>
 		);

@@ -14,7 +14,7 @@ var ActivityItem = React.createClass({
 		return (
 			<div className="activity-card" onClick={this._onclick}>
 				<h2>{this.props.data.name}</h2>
-				<img src={this.props.data.imgsrc}></img>
+				<img src={this.props.data.imgsrc} />
 			</div>
 		);
 	},

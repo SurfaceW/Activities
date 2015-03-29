@@ -38,7 +38,7 @@ var ActivityAction = {
 	delete: function (id) {
 		AppDispatcher.dispatch({
 			type: activityEvent.ACTIVITY_DELETE,
-			id: id
+			data: id
 		});
 	},
 
@@ -46,7 +46,7 @@ var ActivityAction = {
 	detail: function(name) {
 		AppDispatcher.dispatch({
 			type: activityEvent.ACTIVITY_DETAIL,
-			name: name
+			data: name
 		});
 	},
 

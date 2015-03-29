@@ -17,36 +17,42 @@ var ActivityDesignPage = React.createClass({
 
 	render: function () {
 		return (
-				<div
-				key={this._id}
-				className={this.props.highlight 
+				<div key={this._id} 
+					className={this.props.highlight 
 					? "activity-design-page-container"
 					: "activity-design-page-container activity-page-highlight"}
-				onClick={this._selectpage}
-				data-page={this.state.page}>
+					onClick={this._selectpage}
+					data-page={this.state.page}>
+
 				<div className="page-design-option">
 					<label>选择本页面模板</label>
 					<select className="page-design-template"
+						value={this.state.template}
 						onChange={this._changetemplate}>
 						<option value="1">简单清晰</option>
 						<option value="2">时尚动感</option>
 					</select>
 				</div>
+
 				<div className="page-design-option">
 					<label>页面标题</label>
 					<input type="text" 
+						value={this.state.components.title}
 						placeholder="炫酷的标题"
 						className="page-design-title" 
 						onChange={this._changetitle} />
 				</div>
+
 				<div className="page-design-option">
 					<label>页面介绍</label>
 					<textarea 
+						value={this.state.components.text}
 						placeholder="来段有意思的文字吧"
 						className="page-design-text" 
 						onChange={this._changetext}>
 					</textarea>
 				</div>
+
 				<div className="page-design-option">
 					<label>背景图片</label>
 					<input type="file" 
