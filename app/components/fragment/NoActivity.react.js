@@ -16,6 +16,7 @@ var NoActivity = React.createClass({
 				<button 
 					className="add-first-activity" 
 					onClick={this._onclick}>
+					<span>新建活动</span>
 				</button>
 			</div>
 		);
