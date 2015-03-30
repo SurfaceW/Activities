@@ -15,11 +15,20 @@ var Templates = React.createClass({
 
 	render: function () {
 
+		if (!this.props.template) {
+			return (
+				<div>This is a info page</div>
+			);
+		}
+
 		switch (parseInt(this.props.template, 10)) {
 			case 1:
 				return (
 					<div className="activity-preview-page">
-						<TemplateA />
+						<TemplateA 
+							info={this.props.info} 
+							components={this.props.components} 
+							/>
 					</div>
 				);
 				break;

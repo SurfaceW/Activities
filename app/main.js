@@ -11,7 +11,7 @@ var Participator = require('./components/Participator.react');
 var AS           = require('./stores/ActivitiesStore');
 
 // var usertype = null; 
-// var usertype = 'publisher'; // in test case
+// AS.usertype = 'publisher'; // in test case
 AS.usertype = 'participator';
 
 (function () {

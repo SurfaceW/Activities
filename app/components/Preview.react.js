@@ -14,43 +14,66 @@ var Templates       = require('./templates/Templates.react');
 var Preview = React.createClass({
 
 	getDefaultProps: function () {
-		return {};
 	},
 
 	getInitialState: function () {
 		return {'page': 0}
 	},
 
+	componentDidMount: function () {
+	},
+
 	render: function () {
 
-		var data = ActivitiesStore.currentActivity;
+		var data;
+		this.data = data = ActivitiesStore.currentActivity;
+		console.log(data);
 		var i = this.state.page;
 
 		return (
 			<div className="activity-preview-container">
 				<Templates 
 					page={i}
-					template={data.design[i].template}
+					template={data.design[i] ? data.design[i].template : null}
 					info={data.info}
-					components={data.design[i].components} />
+					components={data.design[i] ? data.design[i].components : null} />
 				<div className="preview-control-panel">
-					<button className="left-arrow">上一页
+					<button 
+						className="left-arrow"
+						onClick={this._prepage}>
+						上一页
 					</button>
-					<button className="right-arrow">下一页
+					<button 
+						className="right-arrow"
+						onClick={this._nexpage}>
+						下一页
 					</button>
-					
-					<SliderDot 
+					<SliderDot
+						display={i === data.design.length + 1 ? false : true}
 						highlight={i}
 						number={data.design.length} />
 				</div>
 			</div>
 		);
+	},
+
+	_prepage: function () {
+		if (this.state.page === 0) return;
+		this.setState({'page': this.state.page - 1});
+	},
+
+	_nexpage: function () {
+		if (this.state.page >= this.data.design.length) return;
+		this.setState({'page': this.state.page + 1});
 	}
 });
 
 var SliderDot = React.createClass({
 	render: function () {
 
+		if (!this.props.display) true;
+
+		var self = this;
 		var dots = [];
 		for (var i = 0; i < this.props.number; i++) {
 			dots.push('flag');
@@ -58,10 +81,21 @@ var SliderDot = React.createClass({
 
 		return (
 			<div className="slider-dots">
-				{dots.map(function(item, i) {return (
-					<div className="slider-little-dot"
-						key={i}>
-					</div>);})}
+				{dots.map(function(item, i) {
+					if (i === self.props.highlight) {
+						return (
+							<div className="slider-little-dot-highlight"
+							key={i}>x
+							</div>
+						);
+					} else {
+						return (
+							<div className="slider-little-dot"
+							key={i}>o
+							</div>
+						);
+					}
+				})}
 			</div>
 		);
 	}

@@ -6,11 +6,11 @@ module.exports = {
 			// 活动名称
 			'name': '2015同学聚会', 
 			// 活动日期
-			'date': '2013-4-5', 
+			'date': '2013-04-05', 
 			// 活动地址
 			'loca': '四川省内江市', 
 			// 活动ICON
-			'icon': '', 
+			'icon': '2', 
 			'type': '1', // 类型
 			'design': [
 				{
@@ -28,6 +28,14 @@ module.exports = {
 					'components': {
 						'title': '测试新的数据吧！',
 						'text': '2015同学会是由高12级组织的一次主要的活动。'
+					}
+				},
+				{
+					'page': 3,
+					'template': 1,
+					'components': {
+						'title': '嘿嘿，我知道你们会喜欢的！',
+						'text': '干死你们！'
 					}
 				}
 			],
