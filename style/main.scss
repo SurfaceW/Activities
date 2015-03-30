@@ -12,7 +12,7 @@ $header-height: 3.9em;
 $header-font-size: 1.2em;
 $button-height:3.6em;
 $button-border-radius:1.6em;
-$button-width:14.5em;
+$button-width:63%;
 $button-border-width:0em;
 $p-font-size:0.8em;
 $p-letter-spacing:0.1em;
@@ -36,6 +36,7 @@ body {
 	width: 100%;
 	height: $header-height;
 	background-color: $primary-color-a;
+	font-family: "Microsoft YaHei" !important;
 
 	div {
 
@@ -67,53 +68,32 @@ body {
 
 	@extend .body-container;
 
-
-	.add-first-activity {
-
-	border-radius:$button-border-radius;
-		height:$button-height;
-		width:$button-width;
-		border-width:$button-border-width;
-		background-color:$button-background-color;
-		font-family:"Microsoft YaHei" ! important;
-		color:$buttonandheader-txt-color;}
-	
-	.add-first-activity-icon {
-
-	}
-
-	.add-p-style {
-
+	.no-activity-hint {
 		position:relative;
 		top:1.5em;
-	}
-
-	.p-style {
-
 		font-size:$p-font-size;
 		letter-spacing:$p-letter-spacing;
 		padding-left:$p-padding-left;
 		color:$p-color;
+		font-family: "Microsoft YaHei" !important;
+
 	}
-	
 
-	
 
-	.add-button-style {
+	.add-first-activity {
 
-		position:relative;
+        position:relative;
 		top:2.6em;
-	}
-
-	.button-style{
-
-		border-radius:$button-border-radius;
+	    border-radius:$button-border-radius;
 		height:$button-height;
 		width:$button-width;
 		border-width:$button-border-width;
 		background-color:$button-background-color;
-		font-family:"Microsoft YaHei" ! important;
+		font-family: "Microsoft YaHei" !important;
 		color:$buttonandheader-txt-color;
+	}
+	
+	.add-first-activity-icon {
 
 	}
 }
