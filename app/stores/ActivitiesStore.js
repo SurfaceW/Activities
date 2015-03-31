@@ -19,7 +19,6 @@ var _activity     = [];
 var activityData = require('../../data/demodata').testdata;
 // var activityData = [];
 
-
 var AS = ActivitiesStore = {
 
 	// participator or publisher
@@ -31,6 +30,7 @@ var AS = ActivitiesStore = {
 	// 当前正在交互的 Activity
 	currentActivity: null,
 
+	// Return all of the current data
 	getAllStates: function () {
 		return {
 			'view': this.view,
@@ -47,12 +47,12 @@ function fetch() {
 		AS.view = _activity.length === 0 
 			? states.PUBLISHER_NEW
 			: states.PUBLISHER_ACTIVITY_LIST;
-	} else {
+
+	} else if (AS.usertype === 'participator') {
+
 		AS.view = states.PARTICIPATOR_PRVIEW;
 		AS.currentActivity = _activity[0];
 	}
-
-	
 }
 
 function detail(name) {
@@ -93,15 +93,14 @@ function update(data) {
 		AS.view = states.PUBLISHER_ACTIVITY_LIST;
 		AS.currentActivity = null;
 
-		if (!data.share.url) {
+		if (!data.share) {
 			// If it is new we need to use Ajax to fetch back the
 			// url and 2dc source
 		}
 	}
 }
 
-function deleteItem() {
-	
+function deleteItem() {	
 }
 
 function _updateObj(origin, target) {

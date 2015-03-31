@@ -34,7 +34,7 @@ var Preview = React.createClass({
 			<div className="activity-preview-container">
 				<Templates 
 					page={i}
-					template={data.design[i] ? data.design[i].template : null}
+					template={data.template} // 0 为 info page 的默认值
 					info={data.info}
 					components={data.design[i] ? data.design[i].components : null} />
 				<div className="preview-control-panel">
@@ -49,7 +49,7 @@ var Preview = React.createClass({
 						下一页
 					</button>
 					<SliderDot
-						display={i === data.design.length + 1 ? false : true}
+						display={i === data.design.length ? false : true}
 						highlight={i}
 						number={data.design.length} />
 				</div>
@@ -71,7 +71,7 @@ var Preview = React.createClass({
 var SliderDot = React.createClass({
 	render: function () {
 
-		if (!this.props.display) true;
+		if (!this.props.display) return null;
 
 		var self = this;
 		var dots = [];

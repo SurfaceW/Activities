@@ -4,18 +4,18 @@
  * @version 1.0 
  */
 
-var React           = window.React;
-var $               = window.$;
-var ActivitiesStore = require('../../stores/ActivitiesStore');
-var ActivityAction  = require('../../actions/ActivityAction');
+var React          = window.React;
+var $              = window.$;
+var AS             = require('../../stores/ActivitiesStore');
+var ActivityAction = require('../../actions/ActivityAction');
 
 var NewActivity = React.createClass({
 
 	getInitialState: function () {
 		var data;
 
-		if (ActivitiesStore.currentActivity) {
-			data = ActivitiesStore.currentActivity;
+		if (AS.currentActivity) {
+			data = AS.currentActivity;
 		} else {
 			data = {};
 		}
@@ -29,9 +29,13 @@ var NewActivity = React.createClass({
 		};
 	},
 
+	checkstate: function () {
+		this.getInitialState();
+	},
+
 	render: function () {
 
-		var data;
+		this.checkstate();
 
 		return (
 			<div className="create-new-activity-container">

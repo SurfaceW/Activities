@@ -1,6 +1,6 @@
 module.exports = {
 	'testdata':	[
-			{
+		{
 			// 活动ID，后端给定
 			'id': 0, 
 			// 活动名称
@@ -10,35 +10,17 @@ module.exports = {
 			// 活动地址
 			'loca': '四川省内江市', 
 			// 活动ICON
-			'icon': '2', 
-			'type': '1', // 类型
-			'design': [
-				{
-					'page': 1,
-					'template': 1,
-					'components': {
-						'bgurl': './static/xx/xx.png',
-						'title':'2015高中同学聚会',
-						'text': 'this gonna be a text for introduction of this activity.'
-					}
-				},
-				{
-					'page': 2,
-					'template': 2,
-					'components': {
-						'title': '测试新的数据吧！',
-						'text': '2015同学会是由高12级组织的一次主要的活动。'
-					}
-				},
-				{
-					'page': 3,
-					'template': 1,
-					'components': {
-						'title': '嘿嘿，我知道你们会喜欢的！',
-						'text': '干死你们！'
-					}
-				}
-			],
+			'icon': 2, 
+			'type': 1, // 类型
+			'design': {
+				'template': 1, // 设计套用模板
+				'bgurl': './static/xx/xx.png',
+				'imgurl': './xx/xxx.png',
+				'text': '2015同学会是由高12级组织的一次主要的活动。',
+				'video': 'http://url.com/xxx',
+				'link': 'http://url.gosomewhere.com/xxx',
+				'extra': '更多详细的信息'
+			},
 			'info': ['学院', '班级', '姓名', '手机'], // 需要调查的问题
 			'share': {
 				'url': '',

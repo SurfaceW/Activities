@@ -11,14 +11,6 @@ var AppDispatcher   = require('../dispatcher/Dispatcher');
 var activityEvent = consts.PAGE_EVENTS;
 var PageAction = {
 
-	// 高亮选中 Page
-	highlight: function (page) {
-		AppDispatcher.dispatch({
-			type: activityEvent.PAGE_HIEGHLIGHT,
-			data: page
-		});
-	},
-
 	// 渲染并预览页面
 	preview: function () {
 		AppDispatcher.dispatch({

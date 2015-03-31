@@ -61,7 +61,7 @@ var ActivityDesignInfo = React.createClass({
 	_addnewInfo: function () {
 		var state = this.state.states;
 		state = this.state.states;
-		state[state.length] = '新的信息';
+		state[state.length] = '新的征求信息';
 		this.setState({'states': state});
 	}
 });

@@ -10,9 +10,10 @@ var $               = window.$;
 var TemplateInfo = React.createClass({
 
 	render: function () {
+		console.log(this.props.infos);
 		return (
 			<div className="activity-template-info">
-				This is Template Info.
+				{this.props.infos.toString()}
 			</div>
 		);
 	}

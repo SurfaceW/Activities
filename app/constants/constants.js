@@ -78,15 +78,7 @@ module.exports = {
 		'PUBLISHER_ACTIVITY_DETAIL': 'detail',
 		'PUBLISHER_ACTIVITY_LIST': 'list',
 
-		'PARTICIPATOR_MAIN': 'p-main',
 		'PARTICIPATOR_PRVIEW': 'p-preview',
-		'PARTICIPATOR_JOIN': 'p-join',
 		'PARTICIPATOR_2DCODE': 'p-2dcode'
-	},
-
-	// Tmeplates
-	'ACTIVITY_PAGE_TEMPLATE': {
-		'design': [{'page': 1, 'template': 1, 'components': {}}],
-		'info': ['姓名', '邮箱', '电话']
 	}
 };

@@ -15,7 +15,7 @@ var ActivityList = React.createClass({
 
 	render: function () {
 
-		var data = AS.getAllStates();
+		var data = AS.getAllStates().activities;
 		var activities = [];
 
 		for (var i = 0; i < data.length; i++) {

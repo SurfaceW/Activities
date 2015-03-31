@@ -69,7 +69,7 @@ var Publisher = React.createClass({
 				return (
 					<div className="wrapper">
 						<Header title="活动列表" />
-						<ActivityList type="publisher"/>
+						<ActivityList />
 					</div>
 				);
 				break;

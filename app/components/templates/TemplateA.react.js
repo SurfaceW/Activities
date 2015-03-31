@@ -12,7 +12,10 @@ var TemplateA = React.createClass({
 	render: function () {
 		return (
 			<div className="activity-template-a">
-				This is templateA.
+				This is templateA. 
+				{this.props.components.bgurl},
+				{this.props.components.title},
+				{this.props.components.text}
 			</div>
 		);
 	}
