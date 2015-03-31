@@ -56,9 +56,10 @@ module.exports = {
 
 	// Page Events
 	'PAGE_EVENTS': {
-		'PAGE_HIEGHLIGHT': 'highlight',
 		'PAGE_PREVIEW': 'preview',
-		'PAGE_FINISH': 'finish'
+		'PAGE_FINISH': 'finish',
+		'PAGE_PREPARE': 'prepare',
+		'PAGE_JOIN': 'join'
 	},
 
 	// Preview events

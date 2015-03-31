@@ -4,16 +4,17 @@
  * @version 1.0 
  */
 
-var React           = window.React;
-var $               = window.$;
+var React          = window.React;
+var $              = window.$;
 
-var ActivitiesStore = require('../stores/ActivitiesStore');
-var ActivityAction  = require('../actions/ActivityAction');
-var Templates       = require('./templates/Templates.react');
+var AS             = require('../stores/ActivitiesStore');
+var ActivityAction = require('../actions/ActivityAction');
+var Templates      = require('./templates/Templates.react');
 
 var Preview = React.createClass({
 
 	getDefaultProps: function () {
+		return {'pagenumber': 4};
 	},
 
 	getInitialState: function () {
@@ -21,22 +22,24 @@ var Preview = React.createClass({
 	},
 
 	componentDidMount: function () {
+		var _this = this;
+		AS.on('preview_prepare', function () {
+			_this.setState({'page': 3});
+		});
 	},
 
 	render: function () {
 
 		var data;
-		this.data = data = ActivitiesStore.currentActivity;
-		console.log(data);
 		var i = this.state.page;
+
+		this.data = data = AS.currentActivity;
 
 		return (
 			<div className="activity-preview-container">
 				<Templates 
 					page={i}
-					template={data.template} // 0 为 info page 的默认值
-					info={data.info}
-					components={data.design[i] ? data.design[i].components : null} />
+					data={this.data} />
 				<div className="preview-control-panel">
 					<button 
 						className="left-arrow"
@@ -49,9 +52,9 @@ var Preview = React.createClass({
 						下一页
 					</button>
 					<SliderDot
-						display={i === data.design.length ? false : true}
+						display={i === this.props.pagenumber - 1 ? false : true}
 						highlight={i}
-						number={data.design.length} />
+						number={this.props.pagenumber - 1} />
 				</div>
 			</div>
 		);
@@ -63,7 +66,7 @@ var Preview = React.createClass({
 	},
 
 	_nexpage: function () {
-		if (this.state.page >= this.data.design.length) return;
+		if (this.state.page >= this.props.pagenumber - 1) return;
 		this.setState({'page': this.state.page + 1});
 	}
 });
@@ -72,7 +75,6 @@ var SliderDot = React.createClass({
 	render: function () {
 
 		if (!this.props.display) return null;
-
 		var self = this;
 		var dots = [];
 		for (var i = 0; i < this.props.number; i++) {
