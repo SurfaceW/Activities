@@ -34,12 +34,10 @@ var Preview = React.createClass({
 
 		// Bind Mobile-End UI Events
 		$body.on('swipeleft', function (e) {
-			console.log('left');
 			_this._nexpage();
 		});
 
 		$body.on('swiperight', function (e) {
-			console.log('right');
 			_this._prepage();
 		});
 	},
