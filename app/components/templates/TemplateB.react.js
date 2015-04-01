@@ -1,5 +1,5 @@
 /**
- * TemplateB React Componement
+ * TemplateB React Component
  * @author SurfaceW
  * @version 1.0 
  */
@@ -57,7 +57,7 @@ var TemplateB = React.createClass({
 								<video></video>
 								<p>{data.design.extra}</p>
 							</div>
-							<a href={data.design.link}>更多详细信息</a>
+							<a href={data.design.link}>更多详细信息 </a>
 							<div className="template-a-submit">
 								<button onClick={this._switchtosubmit}>我要报名</button>
 							</div>

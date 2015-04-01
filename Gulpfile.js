@@ -46,7 +46,15 @@ gulp.task('browserify', function() {
 gulp.task('sass', function () {
 	gulp.src('./style/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('./build/css/'));
+        .pipe(concat('bundle.css'))
+        .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('default', ['browserify', 'sass']);
+// gulp.task('css-concat', function () {
+// 	gulp.src('./build/css/*.css')
+// 		.pipe(concat('main.css'))
+// 		.pipe(gulp.dest('./build/'));
+// });
+
+gulp.task('develop', ['browserify', 'sass']);
+gulp.task('default', ['develop']);

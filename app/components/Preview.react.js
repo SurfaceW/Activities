@@ -11,6 +11,8 @@ var AS             = require('../stores/ActivitiesStore');
 var ActivityAction = require('../actions/ActivityAction');
 var Templates      = require('./templates/Templates.react');
 
+var $body = $('body');
+
 var Preview = React.createClass({
 
 	getDefaultProps: function () {
@@ -25,6 +27,20 @@ var Preview = React.createClass({
 		var _this = this;
 		AS.on('preview_prepare', function () {
 			_this.setState({'page': 3});
+		});
+
+		// Hack: revise the body's height to fullscreen
+		$body.height($(document).height());
+
+		// Bind Mobile-End UI Events
+		$body.on('swipeleft', function (e) {
+			console.log('left');
+			_this._nexpage();
+		});
+
+		$body.on('swiperight', function (e) {
+			console.log('right');
+			_this._prepage();
 		});
 	},
 
@@ -42,11 +58,13 @@ var Preview = React.createClass({
 					data={this.data} />
 				<div className="preview-control-panel">
 					<button 
+						hidden="hidden"
 						className="left-arrow"
 						onClick={this._prepage}>
 						上一页
 					</button>
 					<button 
+						hidden="hidden"
 						className="right-arrow"
 						onClick={this._nexpage}>
 						下一页
@@ -83,21 +101,23 @@ var SliderDot = React.createClass({
 
 		return (
 			<div className="slider-dots">
-				{dots.map(function(item, i) {
-					if (i === self.props.highlight) {
-						return (
-							<div className="slider-little-dot-highlight"
-							key={i}>x
-							</div>
-						);
-					} else {
-						return (
-							<div className="slider-little-dot"
-							key={i}>o
-							</div>
-						);
-					}
-				})}
+				<div className="slider-dots-container">
+					{dots.map(function(item, i) {
+						if (i === self.props.highlight) {
+							return (
+								<div className="slider-little-dot highlight-dot"
+								key={i}>
+								</div>
+							);
+						} else {
+							return (
+								<div className="slider-little-dot"
+								key={i}>
+								</div>
+							);
+						}
+					})}
+				</div>
 			</div>
 		);
 	}

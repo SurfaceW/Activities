@@ -10,14 +10,14 @@ module.exports = {
 			// 活动地址
 			'loca': '四川省内江市', 
 			// 活动ICON
-			'icon': 2, 
+			'icon': './style/img/ac1.png', 
 			'type': 1, // 类型
 			'design': {
 				'template': 1, // 设计套用模板
 				'bgurl': './static/xx/xx.png',
-				'imgurl': './xx/xxx.png',
+				'imgurl': './style/pic/demopic.jpg',
 				'text': '2015同学会是由高12级组织的一次主要的活动。',
-				'video': 'http://url.com/xxx',
+				'video': 'http://player.youku.com/embed/XOTI0NDc1OTYw',
 				'link': 'http://url.gosomewhere.com/xxx',
 				'extra': '更多详细的信息'
 			},
