@@ -1,0 +1,160 @@
+/**
+ * This is the css file for templates of 
+ * rendering activity intro. pages
+ */
+
+$background-color-1: #E65B61;
+$background-color-2: #6EC992;
+$background-color-3: #9A58B6;
+$background-color-4: #566473;
+
+
+.activity-template-bg-1 {background-color: $background-color-1;}
+.activity-template-bg-2 {background-color: $background-color-2;}
+.activity-template-bg-3 {background-color: $background-color-3;}
+.activity-template-bg-4 {background-color: $background-color-4;}
+
+.template-a-content-container {
+	overflow: hidden;
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 1em;
+}
+
+.activity-template-a {
+
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	color: white;
+	width: 100%;
+
+	/*
+		This is page 1
+	 */
+
+	.template-a-info-block {
+		@extend .template-a-content-container;
+	}
+
+	.template-a-info-block h2 {
+		display: inline;
+		padding-bottom: 0.4em;
+		border-bottom: 2px solid white;
+
+	}
+
+	.template-a-info-data {
+		padding-top: 1.8em;
+	}
+
+	.template-a-info-loca {
+		padding-top: 0.8em;
+	}
+
+	/*
+		This is page 2 3 4
+	 */
+	
+	.template-a-article {
+		@extend .template-a-content-container;
+
+		.template-a-image-center {
+			margin-top: 1.6em;
+
+			img {
+				width: 60%;
+				margin-left: 20%;
+			}
+		}
+
+		h2 {
+			padding-bottom: 0.8em;
+			margin-bottom: 0.8em;
+			border-bottom: 2px solid white;
+		}
+
+		img {
+			width: 100%;
+			margin-bottom: 0.8em;
+		}
+
+		section {
+			margin-top: 0.8em;
+		}
+
+		p {
+			font-size: 1em;
+			line-height: 1.5em;
+		}
+
+		a:link, a:hover, a:visited {
+			color: white;
+			margin-top: 0.8em;
+		}
+
+		iframe {
+			width: 100%;
+			height: 16em;
+		}
+
+		input {
+			width: 100%;
+			height: 2.4em;
+			border: none;
+			padding-left: 1em;
+			margin-bottom: 1.4em;
+			background-color: rgba(255, 255, 255, 0.2);
+			color: white;
+			font-size: 1em;
+		}
+
+
+	}
+
+	.template-a-submit {
+		
+		width: 60%;
+		margin: 0 auto;
+		margin-top: 3em;
+
+		button {
+			width: 100%;
+			height: 3em;
+			border: 2px solid white;
+			border-radius: 1em;
+			background-color: rgba(255, 255, 255, 0.1);
+			color: white;
+			font-size: 1.1em;
+		}
+
+	}
+
+}
+
+.slider-dots {
+
+	position: fixed;
+	bottom: 1.2em;
+	width: 100%;
+
+	.slider-dots-container {
+		width: 3em;
+		margin: 0 auto;
+	}
+
+	.slider-little-dot {
+		float: left;
+		width: 0.6em;
+		height: 0.6em;
+		margin: 0.2em;
+		border-radius: 0.8em;
+		background-color: rgba(255, 255, 255, 0.6);
+	}
+
+	.highlight-dot {
+		background-color: white;
+	}
+}
+
