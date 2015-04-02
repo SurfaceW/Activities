@@ -158,6 +158,12 @@ AppDispatcher.register(function (action) {
 		case pageEvent.PAGE_JOIN:
 			AS.trigger('preview_join');
 			break;
+		case pageEvent.PAGE_PREV:
+			AS.trigger('page_prev', action.data);
+			break;
+		case pageEvent.PAGE_NEXT:
+			AS.trigger('page_next', action.data);
+			break;
 	}
 });
 

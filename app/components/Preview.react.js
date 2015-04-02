@@ -4,12 +4,12 @@
  * @version 1.0 
  */
 
-var React          = window.React;
-var $              = window.$;
+var React      = window.React;
+var $          = window.$;
 
-var AS             = require('../stores/ActivitiesStore');
-var ActivityAction = require('../actions/ActivityAction');
-var Templates      = require('./templates/Templates.react');
+var AS         = require('../stores/ActivitiesStore');
+var PageAction = require('../actions/PageAction');
+var Templates  = require('./templates/Templates.react');
 
 var $body = $('body');
 
@@ -27,6 +27,7 @@ var Preview = React.createClass({
 		var _this = this;
 		AS.on('preview_prepare', function () {
 			_this.setState({'page': 3});
+			_this._nexpage();
 		});
 
 		// Hack: revise the body's height to fullscreen
@@ -79,11 +80,13 @@ var Preview = React.createClass({
 	_prepage: function () {
 		if (this.state.page === 0) return;
 		this.setState({'page': this.state.page - 1});
+		PageAction.prevpage(this.state.page);
 	},
 
 	_nexpage: function () {
 		if (this.state.page >= this.props.pagenumber - 1) return;
 		this.setState({'page': this.state.page + 1});
+		PageAction.nextpage(this.state.page);
 	}
 });
 
@@ -103,7 +106,8 @@ var SliderDot = React.createClass({
 					{dots.map(function(item, i) {
 						if (i === self.props.highlight) {
 							return (
-								<div className="slider-little-dot highlight-dot"
+								<div 
+								className="slider-little-dot highlight-dot"
 								key={i}>
 								</div>
 							);

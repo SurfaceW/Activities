@@ -39,6 +39,21 @@ var PageAction = {
 			type: pageevent.PAGE_JOIN,
 			data: data
 		});
+	},
+
+	// 用户翻页事件
+	prevpage: function (page) {
+		AppDispatcher.dispatch({
+			type: pageevent.PAGE_PREV,
+			data: page
+		});
+	},
+
+	nextpage: function (page) {
+		AppDispatcher.dispatch({
+			type: pageevent.PAGE_NEXT,
+			data: page
+		});
 	}
 };
 

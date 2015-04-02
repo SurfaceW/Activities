@@ -19,19 +19,21 @@ var TemplateA = React.createClass({
 		var $container = $(this.getDOMNode());
 		var $items     = $container.find('.activity-template-a');
 
-		AS.on('page_next': function (page) {
-			if (page >= 3) return;
+		$items.eq(0).fadeIn('fast');
+
+		AS.on('page_next', function (page) {
 			_this._bodychange();
-			$items.eq(page - 1).fadeOut();
-			$items.eq(page).fadeIn();
+			$items.eq(page - 1).fadeOut('slow');
+			$items.eq(page).fadeIn('slow');
 		});
 
-		AS.on('page_prev': function (page) {
-			if (page <= 0) return;
+		AS.on('page_prev', function (page) {
 			_this._bodychange();
-			$items.eq(page + 1).fadeOut();
-			$items.eq(page).fadeIn();
+			$items.eq(page + 1).fadeOut('slow');
+			$items.eq(page).fadeIn('slow');
 		});
+
+		this._bodychange();
 	},
 
 	// Handle by jQuery not the state machines = =
@@ -60,26 +62,28 @@ var TemplateA = React.createClass({
 		var data = this.data = this.props.data;
 
 		return (
-			<div className="activity-template-a">
-				<div className="template-a-image-center">
-					<img src={data.icon} />
+			<div className="activity-template-a-container">
+				<div className="activity-template-a">
+					<div className="template-a-article">
+					<div className="template-a-image-center">
+						<img id="template-a-image" src={data.icon} />
+					</div>
+					<div className="template-a-info-block">
+						<h2>{data.name}</h2>
+						<p className="template-a-info-data">{data.date}</p>
+						<p className="template-a-info-loca">{data.loca}</p>
+					</div>
+					</div>
 				</div>
-				<div className="template-a-info-block">
-					<h2>{data.name}</h2>
-					<p className="template-a-info-data">{data.date}</p>
-					<p className="template-a-info-loca">{data.loca}</p>
-				</div>
-			</div>
 
-			<div className="activity-template-a" hidden="hidden">
-				<div className="template-a-article">
-					<h2>相关介绍</h2>
-					<img src={data.design.imgurl} />
-					<p>{data.design.text}</p>
+				<div className="activity-template-a">
+					<div className="template-a-article">
+						<h2>相关介绍</h2>
+						<img src={data.design.imgurl} />
+						<p>{data.design.text}</p>
+					</div>
 				</div>
-			</div>
 
-			<div className="activity-template-a" hidden="hidden">
 				<div className="activity-template-a">
 					<div className="template-a-article">
 						<h2>更多信息</h2>
@@ -93,20 +97,19 @@ var TemplateA = React.createClass({
 						<a href={data.design.link}>更多详细信息戳我</a>
 						</section>
 					</div>
-					
 					<div className="template-a-submit">
 						<button onClick={this._switchtosubmit}>我要报名</button>
 					</div>
 				</div>
-			</div>
 
-			<div className="activity-template-a" hidden="hidden">
-				<div className="template-a-article">
-					<h2>报名信息</h2>
-					{data.info.map(this._iterator)}
-				</div>
-				<div className="template-a-submit">
-					<button onClick={this._join}>确定报名</button>
+				<div className="activity-template-a">
+					<div className="template-a-article">
+						<h2>报名信息</h2>
+						{data.info.map(this._iterator)}
+					</div>
+					<div className="template-a-submit">
+						<button onClick={this._join}>确定报名</button>
+					</div>
 				</div>
 			</div>
 		);

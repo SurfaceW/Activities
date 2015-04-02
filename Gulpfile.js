@@ -39,7 +39,8 @@ gulp.task('browserify', function() {
 		  .pipe(source('main.js'))
 		  .pipe(gulp.dest('./build/'))
 		  .pipe(notify(function () {
-			console.log('APP bundle built in ' + (Date.now() - start) + 'ms');
+			console.log('APP bundle built in ' 
+				+ (Date.now() - start) + 'ms');
 		  }));
 });
 
