@@ -71,7 +71,7 @@ var Preview = React.createClass({
 					<SliderDot
 						display={i === this.props.pagenumber - 1 ? false : true}
 						highlight={i}
-						number={this.props.pagenumber - 1} />
+						number={this.props.pagenumber} />
 				</div>
 			</div>
 		);

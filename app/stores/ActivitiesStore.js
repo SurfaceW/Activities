@@ -152,9 +152,6 @@ AppDispatcher.register(function (action) {
 			update(action.data);
 			AS.trigger('view_change');
 			break;
-		case pageEvent.PAGE_PREPARE:
-			AS.trigger('preview_prepare');
-			break;
 		case pageEvent.PAGE_JOIN:
 			AS.trigger('preview_join');
 			break;

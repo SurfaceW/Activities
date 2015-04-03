@@ -25,14 +25,7 @@ var PageAction = {
 			data: data
 		});
 	},
-
-	// 极润准备加入活动的界面
-	prepare: function () {
-		AppDispatcher.dispatch({
-			type: pageevent.PAGE_PREPARE
-		});
-	},
-
+	
 	// 用户加入活动事件
 	join: function (data) {
 		AppDispatcher.dispatch({

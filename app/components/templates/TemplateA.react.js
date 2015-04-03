@@ -19,16 +19,18 @@ var TemplateA = React.createClass({
 		var $container = $(this.getDOMNode());
 		var $items     = $container.find('.activity-template-a');
 
+		this.$container = $container;
+
 		$items.eq(0).fadeIn('fast');
 
 		AS.on('page_next', function (page) {
-			_this._bodychange();
+			if (!_this.props.data.design.bgurl) _this._bodychange();
 			$items.eq(page - 1).fadeOut('slow');
 			$items.eq(page).fadeIn('slow');
 		});
 
 		AS.on('page_prev', function (page) {
-			_this._bodychange();
+			if (!_this.props.data.design.bgurl) _this._bodychange();
 			$items.eq(page + 1).fadeOut('slow');
 			$items.eq(page).fadeIn('slow');
 		});
@@ -53,8 +55,15 @@ var TemplateA = React.createClass({
 
 	// 让 $body 的背景颜色发生改变
 	_bodychange: function () {
-		$body.removeClass();
-		$body.toggleClass('activity-template-bg-' + (this.props.page + 1));
+		var url = 'url(' + this.props.data.design.bgurl + ') 30% 30% no-repeat';
+		if (this.props.data.design.bgurl) {
+			$body.css({
+				'background': url
+			});
+		} else {
+			$body.removeClass();
+			$body.toggleClass('activity-template-bg-' + (this.props.page + 1));
+		}
 	},
 
 	render: function () {
@@ -77,16 +86,20 @@ var TemplateA = React.createClass({
 				</div>
 
 				<div className="activity-template-a">
-					<div className="template-a-article">
+					<div className="template-a-header">
 						<h2>相关介绍</h2>
+					</div>
+					<div className="template-a-article">
 						<img src={data.design.imgurl} />
 						<p>{data.design.text}</p>
 					</div>
 				</div>
 
 				<div className="activity-template-a">
-					<div className="template-a-article">
+					<div className="template-a-header">
 						<h2>更多信息</h2>
+					</div>
+					<div className="template-a-article">
 						<iframe
 						src={data.design.video}
 						frameBorder="0"
@@ -97,28 +110,22 @@ var TemplateA = React.createClass({
 						<a href={data.design.link}>更多详细信息戳我</a>
 						</section>
 					</div>
-					<div className="template-a-submit">
-						<button onClick={this._switchtosubmit}>我要报名</button>
-					</div>
 				</div>
 
 				<div className="activity-template-a">
-					<div className="template-a-article">
+					<div className="template-a-header">
 						<h2>报名信息</h2>
-						{data.info.map(this._iterator)}
 					</div>
 					<div className="template-a-submit">
+						
+						{data.info.map(this._iterator)}
 						<button onClick={this._join}>确定报名</button>
 					</div>
 				</div>
 			</div>
 		);
 	},
-
-	_switchtosubmit: function () {
-		PageAction.prepare();
-	},
-
+	
 	_join: function () {
 		PageAction.join(this.state);
 	}

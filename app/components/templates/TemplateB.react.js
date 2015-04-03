@@ -1,5 +1,5 @@
 /**
- * TemplateB React Component
+ * TemplateA React Componement
  * @author SurfaceW
  * @version 1.0 
  */
@@ -7,8 +7,40 @@
 var React      = window.React;
 var $          = window.$;
 var PageAction = require('../../actions/PageAction');
+var AS         = require('../../stores/ActivitiesStore');
+
+
+var $body = $('body');
 
 var TemplateB = React.createClass({
+
+	componentDidMount: function () {
+		var _this = this;
+		var $container = $(this.getDOMNode());
+		var $items     = $container.find('.activity-template-a');
+
+		$items.eq(0).fadeIn('fast');
+
+		AS.on('page_next', function (page) {
+			_this._bodychange();
+			$items.eq(page - 1).fadeOut('slow');
+			$items.eq(page).fadeIn('slow');
+		});
+
+		AS.on('page_prev', function (page) {
+			_this._bodychange();
+			$items.eq(page + 1).fadeOut('slow');
+			$items.eq(page).fadeIn('slow');
+		});
+
+		this._bodychange();
+	},
+
+	// Handle by jQuery not the state machines = =
+	// It's HACK for future to fix and solve
+	shouldComponentUpdate: function () {
+		return false;
+	},
 
 	_iterator: function (value, key) {
 		return (
@@ -19,70 +51,77 @@ var TemplateB = React.createClass({
 		);
 	},
 
+	// 让 $body 的背景颜色发生改变
+	_bodychange: function () {
+		var url = 'url(' + this.props.data.design.bgurl + ') 30% 30% no-repeat';
+		if (this.props.data.design.bgurl) {
+			$body.css({
+				'background': url
+			});
+		} else {
+			$body.removeClass();
+			$body.toggleClass('activity-template-bg-' + (this.props.page + 1));
+		}
+	},
+
 	render: function () {
 
 		var data = this.data = this.props.data;
 
-		switch (this.props.page) {
-			case 0:
-				return (
-					<div className="activity-template-a">
-						<div className="template-a-image-center">
-						</div>
-						<div className="template-a-info-block">
-							<h2>{data.name}</h2>
-							<p>{data.date}</p>
-							<address>{data.loca}</address>
-						</div>
+		return (
+			<div className="activity-template-a-container">
+				<div className="activity-template-a">
+					<div className="template-a-article">
+					<div className="template-a-image-center">
+						<img id="template-a-image" src={data.icon} />
 					</div>
-				);
-				break;
-			case 1:
-				return (
-					<div className="activity-template-a">
-						<div className="template-a-article">
-							<h1>相关介绍</h1>
-							<img src={data.design.imgurl} />
-							<p>{data.design.text}</p>
-						</div>
+					<div className="template-a-info-block">
+						<h2>{data.name}</h2>
+						<p className="template-a-info-data">{data.date}</p>
+						<p className="template-a-info-loca">{data.loca}</p>
 					</div>
-				);
-				break;
-			case 2:
-				return (
-					<div className="activity-template-a">
-						<div className="activity-template-a">
-							<div className="template-a-article">
-								<h1>更多信息</h1>
-								<video></video>
-								<p>{data.design.extra}</p>
-							</div>
-							<a href={data.design.link}>更多详细信息 </a>
-							<div className="template-a-submit">
-								<button onClick={this._switchtosubmit}>我要报名</button>
-							</div>
-						</div>
 					</div>
-				);
-				break;
-			case 3:
-				return (
-					<div className="activity-template-a">
-						<div className="template-a-article">
-							<h1>报名信息</h1>
-							{data.info.map(this._iterator)}
-						</div>
-						<div className="template-a-submit-sure">
-							<button onClick={this._join}>确定报名</button>
-						</div>
-					</div>
-				);
-				break;
-		}
-	},
+				</div>
 
-	_switchtosubmit: function () {
-		PageAction.prepare();
+				<div className="activity-template-a">
+					<div className="template-a-header">
+						<h2>相关介绍</h2>
+					</div>
+					<div className="template-a-article">
+						<img src={data.design.imgurl} />
+						<p>{data.design.text}</p>
+					</div>
+				</div>
+
+				<div className="activity-template-a">
+					<div className="template-a-header">
+						<h2>更多信息</h2>
+					</div>
+					<div className="template-a-article">
+						<iframe
+						src={data.design.video}
+						frameBorder="0"
+						allowFullScreen={true}>
+						</iframe>
+						<section>
+						<p>{data.design.extra}</p>
+						<a href={data.design.link}>更多详细信息戳我</a>
+						</section>
+					</div>
+				</div>
+
+				<div className="activity-template-a">
+					<div className="template-a-header">
+						<h2>报名信息</h2>
+					</div>
+					<div className="template-a-submit">
+						
+						{data.info.map(this._iterator)}
+						<button onClick={this._join}>确定报名</button>
+					</div>
+				</div>
+			</div>
+		);
 	},
 
 	_join: function () {

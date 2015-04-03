@@ -15,10 +15,9 @@ $background-color-4: #566473;
 .activity-template-bg-4 {background-color: $background-color-4;}
 
 .template-a-content-container {
-	overflow: hidden;
+	overflow: scroll;
 	width: 80%;
 	margin-left: 10%;
-	margin-top: 1em;
 }
 
 .activity-template-a {
@@ -34,31 +33,41 @@ $background-color-4: #566473;
 		This is page 1
 	 */
 
-	.template-a-info-block {
-		@extend .template-a-content-container;
-	}
-
-	.template-a-info-block h2 {
-		display: inline;
-		padding-bottom: 0.4em;
-		border-bottom: 2px solid white;
-
-	}
-
-	.template-a-info-data {
-		padding-top: 1.8em;
-	}
-
-	.template-a-info-loca {
-		padding-top: 0.8em;
-	}
-
 	/*
 		This is page 2 3 4
 	 */
+	.template-a-header {
+		@extend .template-a-content-container;
+		margin-top: 0.8em;
+
+		h2 {
+			padding-bottom: 0.4em;
+			margin-bottom: 0.5em;
+			border-bottom: 1px solid white;
+		}
+	}
 	
 	.template-a-article {
 		@extend .template-a-content-container;
+		height: 76%;
+
+		.template-a-info-block {
+			@extend .template-a-content-container;
+
+			.template-a-info-data {
+				padding-top: 1.8em;
+			}
+
+			.template-a-info-loca {
+				padding-top: 0.2em;
+			}
+
+			h2 {
+				display: inline;
+				padding-bottom: 0.4em;
+				border-bottom: 2px solid white;
+			}
+		}
 
 		.template-a-image-center {
 			margin-top: 1.6em;
@@ -77,11 +86,11 @@ $background-color-4: #566473;
 
 		img {
 			width: 100%;
-			margin-bottom: 0.8em;
+			margin-bottom: 0.4em;
 		}
 
 		section {
-			margin-top: 0.8em;
+			margin-top: 0.4em;
 		}
 
 		p {
@@ -98,29 +107,29 @@ $background-color-4: #566473;
 			width: 100%;
 			height: 16em;
 		}
+	}
+
+	.template-a-submit {
+
+		@extend .template-a-content-container;
+		height: 80%;
 
 		input {
 			width: 100%;
 			height: 2.4em;
 			border: none;
-			padding-left: 1em;
-			margin-bottom: 1.4em;
+			margin-bottom: 0.8em;
 			background-color: rgba(255, 255, 255, 0.2);
 			color: white;
+			text-indent: 1.2em;
 			font-size: 1em;
 		}
 
-
-	}
-
-	.template-a-submit {
-		
-		width: 60%;
-		margin: 0 auto;
-		margin-top: 3em;
-
 		button {
-			width: 100%;
+			position: fixed;
+			left: 20%;
+			bottom: 1.2em;
+			width: 60%;
 			height: 3em;
 			border: 2px solid white;
 			border-radius: 1em;
@@ -133,14 +142,19 @@ $background-color-4: #566473;
 
 }
 
+input::-webkit-input-placeholder {color: white;}
+input::-moz-placeholder {color: white;}
+input::-ms-placeholder {color: white;}
+
+
 .slider-dots {
 
 	position: fixed;
-	bottom: 1.2em;
+	bottom: 1.0em;
 	width: 100%;
 
 	.slider-dots-container {
-		width: 3em;
+		width: 4em;
 		margin: 0 auto;
 	}
 
