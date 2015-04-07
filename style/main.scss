@@ -3,18 +3,16 @@ $font-stack: Helvetica, sans-serif;
 
 // 颜色预设
 $primary-color-a: rgba(121, 134, 203, 0.8);
-$buttonandheader-txt-color:white;
 $p-color:rgb(165, 160, 160);
-$button-background-color:rgba(121, 134, 203, 0.5);
+$font-interface-color: #9B9B9B;
+$button-bg-color: rgba(121, 134, 203, .6);
+$button-bg-danger: rgba(208, 2, 27, .42);
 
 // 高度预设
 $header-height: 3.9em;
 $header-font-size: 1.2em;
-$button-height:3.6em;
-$button-border-radius:1.6em;
-$button-width:63%;
-$button-border-width:0em;
-$p-font-size:0.8em;
+
+$p-font-size:1em;
 $p-letter-spacing:0.1em;
 $p-padding-left:1em;
 
@@ -23,7 +21,37 @@ $h1-size: 1.8em;
 $h2-size: 1.5em;
 $h3-size: 1.2em;
 
+// Shadow 基本样式
+$header-shadow: 0 0 0.1em 0.1em lightgray;
 
+.standard-card {
+	width: 90%;
+	margin: 0 auto;
+	box-shadow: 0 0.2em 0.2em 0 lightgray;
+}
+
+.standard-button {
+	z-index: 100;
+	width: 3em;
+	height: 2em;
+	border: none;
+	border-radius: 0.6em;
+	font-size: 1em;
+	color: white;
+}
+
+.form {
+	display: block;
+	clear: both;
+	width: 80%;
+	height: 1.8em;
+	border: none;
+	margin: 0 auto;
+	color: gray;
+	background: rgba(22,22,22,0.05);
+	text-indent: 1em;
+	font-size: 1em;
+}
 
 // Clear the mess
 * {
@@ -37,19 +65,38 @@ body {
 
 .header-container {
 
+	z-index: 99;
 	position: fixed;
+	top: 0;
 	width: 100%;
 	height: $header-height;
 	background-color: $primary-color-a;
-	font-family: "Microsoft YaHei" !important;
+	box-shadow: $header-shadow;
 
-	div {
+	.header-center {
+		width: 8em;
+		margin: 0 auto;
+		margin-top: 0.6em;
+	}
 
-		height: $header-height;
+	.header-content {
+
+		padding-top: 0.4em;
 		font-size: $header-font-size;
-		padding-top: ($header-height - $header-font-size - 0.2) / 2;
-		text-align: center;
+		font-family: Lucida Grande;
 		color: white;
+
+	}
+
+	.header-icon {
+		float: left;
+		width: 2.5em;
+		height: 2.5em;
+		margin-right: 0.2em;
+		img {
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 
@@ -60,13 +107,11 @@ body {
 
 	text-align: center;
 	width: 100%;
-
 }
 
 .loading-container {
 
 	@extend .body-container;
-
 }
 
 .no-activity-container {
@@ -76,26 +121,26 @@ body {
 	.no-activity-hint {
 		position:relative;
 		top:1.5em;
+		margin-bottom: 1.2em;
 		font-size:$p-font-size;
 		letter-spacing:$p-letter-spacing;
 		padding-left:$p-padding-left;
 		color:$p-color;
-		font-family: "Microsoft YaHei" !important;
 
 	}
 
 
 	.add-first-activity {
 
-        position:relative;
-		top:2.6em;
-	    border-radius:$button-border-radius;
-		height:$button-height;
-		width:$button-width;
-		border-width:$button-border-width;
-		background-color:$button-background-color;
-		font-family: "Microsoft YaHei" !important;
-		color:$buttonandheader-txt-color;
+    position:relative;
+		top:1.6em;
+	  border-radius:1.6em;
+		height: 2.8em;
+		width: 64%;
+		border:none;
+		background-color:$button-bg-color;
+		color: white;
+		font-size: 1.2em;
 	}
 	
 	.add-first-activity-icon {
@@ -107,30 +152,373 @@ body {
 
 	@extend .body-container;
 
+	.activity-card {
+		@extend .standard-card;
+
+			position: relative;
+		  top: 2em;
+		  height: 5em;
+		  margin-bottom: 2em;
+
+		.activity-card-image {
+	  	float: left;
+	  	width: 5em;
+	  	height: 5em;
+	  }
+
+	  img {
+	  	float: left;
+	  	width: 100%;
+	  	height: 100%;
+	  }
+
+	  .activity-card-title {
+	  	float: left;
+	  	margin-left: 1em;
+	  	width: 60%;
+	  	overflow: hidden;
+	  }
+
+	  p {
+	  	color: gray;
+  		margin-top: 1.5em;
+  		font-size: 1.1em;
+	  }
+	}
+
+	.add-activity-button {
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		right: 5%;
+		background-color: $button-bg-color;
+	}
 }
 
 .create-new-activity-container {
 
 	@extend .body-container;
 
+	.activity-card {
+
+		@extend .standard-card;
+
+		position: relative;
+	  top: 2em;
+	  height: 5em;
+
+	  .activity-card-image {
+	  	float: left;
+	  	width: 5em;
+	  	height: 5em;
+	  }
+
+	  .activity-card-input {
+	  	float: left;
+	  	margin-left: 1em;
+	  	width: 60%;
+	  }
+
+	  img {
+	  	float: left;
+	  	width: 100%;
+	  	height: 100%;
+	  }
+
+	  textarea {
+	  	width: 100%;
+	  	height: 1.8em;
+	  	border: none;
+	  	margin: 0 auto;
+	  	margin-top: 2em;
+	  	color: gray;
+	  	font-size: 1em;
+	  }
+	}
+
+	.activity-info {
+
+		@extend .standard-card;
+
+		position: relative;
+		top: 2em;
+		height: 18em;
+		margin-top: 2em;
+		margin-bottom: 2em;
+
+		.activity-info-item {
+			clear: both;
+			width: 100%;
+			height: 6em;
+		}
+
+		.activity-info-date {
+			float: left;
+			margin-left: 10%;
+		}
+
+		label {
+			float: left;
+			margin-left: 10%;
+  		padding-top: 0.8em;
+  		padding-bottom: 0.8em;
+			color: $font-interface-color;
+		}
+
+		select {
+			@extend .form
+		}
+
+		input {
+			@extend .form
+		}
+	}
+
+	.activity-create {
+
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		right: 5%;
+		background-color: $button-bg-color;
+	}
+
+	.activity-cancel {
+
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		left: 5%;
+		background-color: $button-bg-danger;
+	}
 }
 
 .activity-design-container {
 
 	@extend .body-container;
 
+	.activity-design-page-container {
+		@extend .standard-card;
+
+		margin-top: 2em;
+	}
+
+	.activity-design-info-container {
+		@extend .standard-card;
+
+		margin-top: 2em;
+		margin-bottom: 2em;
+
+		p {
+			padding: 1em 0 1em 0;
+			color: gray;
+		}
+
+		button {
+			@extend .standard-button;
+
+			margin-top: 1em;
+			background-color: $button-bg-danger;
+		}
+
+		.info-item-add {
+			margin-bottom: 2em;
+		  width: 8em;
+		  background-color: green;
+		}
+	}
+
+	.page-design-option {
+			clear: both;
+			width: 100%;
+			height: 6em;
+
+			label {
+				float: left;
+				margin-left: 10%;
+	  		padding-top: 0.8em;
+	  		padding-bottom: 0.8em;
+				color: $font-interface-color;
+			}
+
+			select {
+				@extend .form;
+			}
+
+			input {
+				@extend .form;
+			}
+
+			textarea {
+				@extend .form;
+				height: 17em;
+			}
+	}
+
+	.page-design-option-large {
+		@extend .page-design-option;
+		height: 20em;
+	}
+
+	.preview-page {
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		left: 5%;
+		background-color: darkgreen;
+	}
+
+	.finish-design {
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		right: 5%;
+		background-color: $button-bg-color;
+	}
 }
 
 .activity-detail-container {
 
 	@extend .body-container;
 
+	.activity-large-card {
+		@extend .standard-card;
+
+			position: relative;
+		  top: 2em;
+		  height: 20em;
+		  margin-bottom: 2em;
+
+		.activity-card-image {
+	  	float: left;
+	  	width: 5em;
+	  	height: 5em;
+	  }
+
+	  img {
+	  	float: left;
+	  	width: 100%;
+	  	height: 100%;
+	  }
+
+	  .activity-card-title {
+	  	float: left;
+	  	margin-left: 1em;
+	  	width: 60%;
+	  	overflow: hidden;
+	  }
+
+	  p {
+	  	color: gray;
+  		margin-top: 1.5em;
+  		font-size: 1.1em;
+	  }
+
+	  .activity-card-share {
+	  	float: left;
+  		clear: both;
+  		margin-top: 1em;
+  		width: 100%;
+  		color: gray;
+
+  		.activity-card-share-image {
+				width: 10em;
+			  height: 10em;
+			  margin-left: 6em;
+
+			  img {
+			  	margin-top: 1.2em;
+			  }
+  		}
+	  }
+
+	  .activity-card-share-link {
+	  	overflow: scroll;
+	  }
+
+	 	.ac-card-share-link-t {
+	 		float: left;
+	 		width: 5em;
+	 	}
+
+	 	.ac-card-share-link-u {
+	 		float: left;
+	 		padding-left: 1em;
+	 		text-align: left;
+	 	}
+	}
+
+	.activity-detail-back {
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		left: 5%;
+		background-color: darkgreen;
+	}
+
+	.activity-participators-container {
+		p {
+			padding: 1em;
+  		font-size: 1.1em;
+  		color: gray;
+		}
+	}
+
+	.participator-card {
+		@extend .standard-card;
+
+		min-height: 5em;
+		margin-bottom: 1.2em;
+
+		.participator-info {
+			width: 70%;
+  		padding-left: 1em;
+  		overflow: scroll;
+		}
+
+		table {
+			padding: 1em 0 1em 0;
+			color: gray;
+  		text-align: left;
+
+  		td {
+  			min-width: 4em;
+  		}
+		}
+
+		img {
+			width: 5em;
+  		height: 5em;
+  		float: left;
+		}
+	}
+
+	.activity-detail-update {
+		@extend .standard-button;
+
+		position: fixed;
+		top: 1em;
+		right: 5%;
+		background-color: $button-bg-color;
+	}
 }
 
 .error-hint-container {
 
 	@extend .body-container;
+	margin-top: 2em;
 
+	color: gray;
+
+	.error-hint {
+		text-align: center;
+	}
 }
 
 

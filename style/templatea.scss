@@ -22,6 +22,10 @@ $background-color-4: #566473;
 
 .activity-template-a {
 
+	input::-webkit-input-placeholder {color: white;}
+	input::-moz-placeholder {color: white;}
+	input::-ms-placeholder {color: white;}
+
 	display: none;
 	position: absolute;
 	top: 0;
@@ -139,12 +143,7 @@ $background-color-4: #566473;
 		}
 
 	}
-
 }
-
-input::-webkit-input-placeholder {color: white;}
-input::-moz-placeholder {color: white;}
-input::-ms-placeholder {color: white;}
 
 
 .slider-dots {

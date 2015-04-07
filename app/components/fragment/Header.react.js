@@ -6,7 +6,10 @@ var Header = React.createClass({
 	render: function () {
 		return (
 			<header className="header-container">
-				<div><span className="header-logo"></span> {this.props.title}</div>
+				<div className="header-center">
+				<div className="header-icon"><img src={"../../style/img/header-icon.png"} /></div>
+				<div className="header-content">{this.props.title}</div>
+				</div>
 			</header>
 		);
 	}

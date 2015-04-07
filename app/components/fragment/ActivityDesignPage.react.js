@@ -49,7 +49,7 @@ var ActivityDesignPage = React.createClass({
 						onChange={this._changevideo} />
 				</div>
 
-				<div className="page-design-option">
+				<div className="page-design-option-large">
 					<label>页面介绍</label>
 					<textarea 
 						value={this.state.data.text}
@@ -59,7 +59,7 @@ var ActivityDesignPage = React.createClass({
 					</textarea>
 				</div>
 
-				<div className="page-design-option">
+				<div className="page-design-option-large">
 					<label>补充说明</label>
 					<textarea 
 						value={this.state.data.extra}

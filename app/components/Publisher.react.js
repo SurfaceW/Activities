@@ -50,7 +50,7 @@ var Publisher = React.createClass({
 			case constants.LOADING:
 				return (
 					<div className="wrapper">
-						<Header title="Activities"/>
+						<Header title="ctivities"/>
 						<Loading />
 					</div>
 				);
@@ -59,7 +59,7 @@ var Publisher = React.createClass({
 				// 为新用户渲染的视图(没有活动)
 				return (
 					<div className="wrapper">
-						<Header title="Activities" />
+						<Header title="ctivities" />
 						<NoActivity />
 					</div>
 				);

@@ -30,7 +30,7 @@ var ActivityList = React.createClass({
 				<button 
 					className="add-activity-button" 
 					onClick={this._onclick}>
-				+ 新建活动
+				新建
 				</button>
 			</div>
 		);

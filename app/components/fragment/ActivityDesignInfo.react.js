@@ -24,7 +24,7 @@ var ActivityDesignInfo = React.createClass({
 					onChange={this._changeinfo} />
 				<button className="page-deisgn-quiz-del"
 					data-order={key}
-					onClick={this._deleteinfo}>删除此Quiz
+					onClick={this._deleteinfo}>删除
 				</button>
 			</div>
 		);
@@ -32,8 +32,8 @@ var ActivityDesignInfo = React.createClass({
 
 	render: function () {
 		return (
-			<div className="activity-design-page-container">
-				<p>请输入你想向参与者征集的信息：</p>
+			<div className="activity-design-info-container">
+				<p>请输入你想向参与者征集的信息</p>
 				{this.state.states.map(this._iteratorInfos)}
 				<button 
 					className="info-item-add" 

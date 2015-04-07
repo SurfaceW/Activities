@@ -35,8 +35,8 @@ var ActivityDesign = React.createClass({
 					<ActivityDesignInfo data={this.state.info} />
 				</div>
 				<div className="activity-deisgn-panel">
-					<button className="preview-page" onClick={this._preview}>效果预览</button>
-					<button className="finish-design" onClick={this._finish}>完成设计</button>
+					<button className="preview-page" onClick={this._preview}>预览</button>
+					<button className="finish-design" onClick={this._finish}>完成</button>
 				</div>
 			</div>
 		);

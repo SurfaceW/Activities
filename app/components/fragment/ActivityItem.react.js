@@ -13,8 +13,12 @@ var ActivityItem = React.createClass({
 	render: function () {
 		return (
 			<div className="activity-card" onClick={this._onclick}>
-				<h2>{this.props.data.name}</h2>
-				<img src={this.props.data.imgsrc} />
+				<div className="activity-card-image">
+					<img src={this.props.data.icon} />
+				</div>
+				<div className="activity-card-title">
+					<p>{this.props.data.name}</p>
+				</div>
 			</div>
 		);
 	},

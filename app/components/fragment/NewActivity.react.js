@@ -40,11 +40,15 @@ var NewActivity = React.createClass({
 		return (
 			<div className="create-new-activity-container">
 				<div className="activity-card">
-					<img src="" />
-					<input type="text" className="activity-name" 
-						placeholder="请输入活动名称"
-						value={this.state.name}
-						onChange={this._changename} />
+					<div className="activity-card-image">
+						<img src="./style/img/ac2.png" />
+					</div>
+					<div className="activity-card-input">
+						<textarea className="activity-name" 
+							placeholder="请输入活动名称"
+							value={this.state.name}
+							onChange={this._changename}></textarea>
+					</div>
 				</div>
 				<div className="activity-info">
 					<div className="activity-info-item">
